@@ -37,6 +37,7 @@ Conformément à la philosophie **Vibe Coding** décrite dans le PRD, toute l'ap
 ├── index.html                           # Site complet (HTML5 + CSS3 + Synthé 8-bit JS + Mini-jeu Canvas)
 ├── PRD.md                               # Product Requirements Document complet du projet
 ├── README.md                            # Documentation et guide de personnalisation
+├── PROGRESS.md                          # État d'avancement, bugs connus et prochaines tâches (Roadmap)
 ├── DEVLOG.md                            # Cahier de bord Vibe Coding + explication technique des Badges & XP
 ├── SECRETS-ET-CULTURE-RETRO.md          # Histoire du Code Konami, des Easter Eggs et de la culture 8-bit
 └── Instructions/
