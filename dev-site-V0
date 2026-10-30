@@ -1,0 +1,23 @@
+'ai créé le site complet en un seul fichier autonome index.html en suivant toutes les mécaniques et les effets « waouh » du PRD - Site Web - PixelQuest.md, avec Maxence comme héros de l'aventure.
+
+🕹️ Ce qui a été intégré dans index.html
+
+Écran d'accueil Borne d'Arcade (PIXELQUEST : LA LÉGENDE DE MAXENCE)
+
+Logo néon clignotant, effet CRT rétro, sprite pixel-art original de Maxence (avec bandeau cyan et cape) et tagline « Appuie sur START pour me découvrir ».
+Bouton clignotant 🪙 INSERT COIN / START avec synthétiseur audio 8-bit intégré (Web Audio API sans dépendance externe) et bouton 🔇/🔊 dans la barre supérieure.
+
+🗺️ Carte du Monde interactive (Menu principal)
+
+Maxence marche en pixel-art sur les chemins de la carte jusqu'à la zone choisie (cliquable à la souris, au doigt ou via les touches 1, 2, 3, 4 du clavier) :
+🌋 Niveau 1 — Qui suis-je ? : Fiche de stats RPG de Maxence, ses passions/sports, et les 5 faits fun avec un mini-défi interactif (« Trouve lequel des 5 faits est totalement absurde ! » pour gagner +15 XP).
+🏰 Niveau 2 — Mes Projets (Donjon des Boss) : 3 projets gardés chacun par un Boss Pixel avec barre de PV. Il faut attaquer 3 fois leur bouclier pour les vaincre, faire tomber des confettis pixel et révéler le projet.
+👾 Niveau 3 — Mes High Scores & Salle d'Arcade : Tableau des records IRL gamifiés, vitrine des 6 badges à collectionner, et vrai mini-jeu jouable intégré (Maxence Astro-Dodge sur <canvas>) pour tenter de battre le record de Maxence.
+📬 Niveau 4 — Boss Final : Contact & Trésor Caché : Parchemin de message sécurisé (respectant les contraintes de confidentialité du PRD) + Coffre au Trésor secret caché dans le décor à débusquer.
+
+📈 Système d'XP (localStorage) & Effets « Waouh »
+
+Progression sauvegardée : +10 XP par zone visitée, bonus d'XP pour les boss, les secrets et les badges, avec montée en grade (Héros en herbe → Explorateur Rétro → Chevalier du Code → Maître du Pixel → Légende de l'Arcade).
+Easter Egg 1 (Danse Pixel) : Cliquer 5 fois sur l'avatar de Maxence déclenche sa danse pixel et débloque le badge Danseur Pixel.
+Easter Egg 2 (Code Konami) : Taper ↑ ↑ ↓ ↓ ← → ← → B A au clavier (ou cliquer sur le raccourci en bas de page) lance le Mode Rainbow 10s avec mélodie 8-bit.
+Mode 🌙 Nuit / ☀️ Jour et changement de curseur pixel custom (🗡️ Épée ou 🚀 Fusée)

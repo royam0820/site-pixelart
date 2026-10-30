@@ -92,3 +92,4 @@ Maxence se déplace visuellement sur les routes en pointillés de la carte jusqu
 | **Graphismes** | Sprites SVG `crispEdges` + Emojis | Poids plume (< 40 Ko au total), netteté pixel-art sur tous les écrans |
 | **Confidentialité** | Pseudo uniquement (`MAXENCE`) | Aucune donnée personnelle sensible exposée (conformité sécurité mineur) |
 | **Hébergement** | GitHub Pages (`main` / root) | Gratuit, HTTPS activé, mise à jour automatique à chaque `git push` |
+

@@ -37,6 +37,7 @@ Conformément à la philosophie **Vibe Coding** décrite dans le PRD, toute l'ap
 ├── index.html                           # Site complet (HTML5 + CSS3 + Synthé 8-bit JS + Mini-jeu Canvas)
 ├── PRD.md                               # Product Requirements Document complet du projet
 ├── README.md                            # Documentation et guide de personnalisation
+├── SECRETS-ET-CULTURE-RETRO.md          # Histoire du Code Konami, des Easter Eggs et de la culture 8-bit
 └── Instructions/
     └── PRD - Site Web - PixelQuest.md   # Cahier des charges initial & méthodologie Vibe Coding
 ```
@@ -63,3 +64,4 @@ git commit -m "Mise à jour du monde de Maxence"
 git push
 ```
 Le site **[https://royam0820.github.io/site-pixelart/](https://royam0820.github.io/site-pixelart/)** se mettra à jour automatiquement en quelques secondes !
+
