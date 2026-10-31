@@ -1,4 +1,4 @@
-# 🧑‍💻 5 Missions de Codeur pour Maxence (Sans IA / Sans Vibe Coding)
+# 🧑‍💻 5 Missions de Codeur (Sans IA / Sans Vibe Coding)
 
 Cette fiche d'activité te permet d'apprendre à **modifier directement le vrai code** de ton jeu **PIXELQUEST** au clavier, comme un développeur de jeux vidéo !
 
@@ -78,7 +78,7 @@ Cette fiche d'activité te permet d'apprendre à **modifier directement le vrai 
 ## 🔵 Mission 4 : Repeindre les cheveux ou la cape de ton Avatar Pixel-Art (dans `index.html`)
 > **Ce que tu apprends** : Comment l'ordinateur dessine du **Pixel-Art vectoriel (SVG)** sur une grille de `16×16` cases.
 
-1. Ouvre **`index.html`** aux **lignes 86 à 99** (c'est le grand personnage de Maxence sur l'écran d'accueil) :
+1. Ouvre **`index.html`** aux **lignes 86 à 99** (c'est le grand personnage du héros sur l'écran d'accueil) :
    ```html
    <svg width="110" height="110" viewBox="0 0 16 16" shape-rendering="crispEdges">
      <path fill="#ff9f1c" d="M4 1h8v2H4zM3 3h10v2H3z"/>
@@ -117,3 +117,4 @@ Cette fiche d'activité te permet d'apprendre à **modifier directement le vrai 
 - [ ] J'ai réussi la **Mission 3** (changer la couleur néon dans `style.css`)
 - [ ] J'ai réussi la **Mission 4** (changer la couleur de l'avatar Pixel-Art dans `index.html`)
 - [ ] J'ai réussi la **Mission 5** (modifier la vitesse ou les points du mini-jeu dans `script.js`)
+
