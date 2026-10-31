@@ -104,3 +104,4 @@ Dans un site web classique :
 
 Dans **PIXELQUEST (le site-jeu d'arcade de Maxence)** :
 - Le visiteur devient **joueur** : il a une quête (*explorer les 4 mondes*), des mystères à résoudre (*trouver le fait absurde*, *chercher le coffre caché*, *vaincre les 3 Boss*), un score à battre (*120 points au mini-jeu*) et **6 badges à collectionner** pour atteindre le rang suprême de **Niv. 5 — Légende de l'Arcade 🏆**.
+

@@ -51,3 +51,4 @@ Dans un jeu vidéo ou un site web, un **Easter Egg** est une fonction cachée, u
 
 - **C'est quoi les petites lignes horizontales sur l'écran (CRT Scanlines) ?**
   Avant les écrans plats d'aujourd'hui, on jouait sur de grosses télévisions à **tube cathodique (CRT)** et sur des bornes d'arcade. Le faisceau lumineux balayait l'écran ligne par ligne, ce qui créait ces fines lignes horizontales appelées *scanlines* !
+

@@ -38,15 +38,23 @@ Pour faciliter l'apprentissage du développement web (« la métaphore du corps 
 ├── style.css                            # 🎨 Le Costume : couleurs néon, polices pixel-art, mode Jour/Nuit et animations
 ├── user-data.js                         # 📓 Le Carnet : toutes les données personnelles (stats, 5 faits, 3 projets, records)
 ├── script.js                            # 🧠 Le Cerveau : moteur du jeu, synthé 8-bit, XP, localStorage, mini-jeu et Konami
-├── PRD.md                               # Product Requirements Document complet du projet
-├── README.md                            # Documentation et guide de personnalisation
-├── PROGRESS.md                          # État d'avancement, bugs connus et prochaines tâches (Roadmap)
-├── DEVLOG.md                            # Cahier de bord Vibe Coding + explication technique des Badges & XP
-├── ARCHITECTURE-JEU-ARCADE.md           # Construction d'un jeu d'arcade rétro et parallèle avec PIXELQUEST
-├── SECRETS-ET-CULTURE-RETRO.md          # Histoire du Code Konami, des Easter Eggs et de la culture 8-bit
+├── README.md                            # Présentation générale et guide de démarrage
+├── Doc/                                 # 📚 Documentation complète du projet
+│   ├── PRD.md                           # Product Requirements Document complet du projet
+│   ├── PROGRESS.md                      # État d'avancement, bugs connus et prochaines tâches (Roadmap)
+│   ├── DEVLOG.md                        # Cahier de bord Vibe Coding + explication technique des Badges & XP
+│   ├── ARCHITECTURE-JEU-ARCADE.md       # Construction d'un jeu d'arcade rétro et parallèle avec PIXELQUEST
+│   └── SECRETS-ET-CULTURE-RETRO.md      # Histoire du Code Konami, des Easter Eggs et de la culture 8-bit
 └── Instructions/
     └── PRD - Site Web - PixelQuest.md   # Cahier des charges initial & méthodologie Vibe Coding
 ```
+
+### 📚 Liens directs vers la documentation (`Doc/`)
+- 📋 **[PRD.md](Doc/PRD.md)** — Cahier des charges et spécifications fonctionnelles
+- 📊 **[PROGRESS.md](Doc/PROGRESS.md)** — Ce qui fonctionne, bugs connus et prochaines tâches
+- 📓 **[DEVLOG.md](Doc/DEVLOG.md)** — Journal de bord Vibe Coding & fonctionnement des Badges / `localStorage`
+- 🕹️ **[ARCHITECTURE-JEU-ARCADE.md](Doc/ARCHITECTURE-JEU-ARCADE.md)** — Anatomie d'un jeu d'arcade et parallèle avec le projet
+- 🌈 **[SECRETS-ET-CULTURE-RETRO.md](Doc/SECRETS-ET-CULTURE-RETRO.md)** — Histoire du Code Konami, des Easter Eggs et du son 8-bit
 
 ---
 

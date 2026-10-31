@@ -91,3 +91,4 @@ const USER_DATA = {
 
 // Alias pour compatibilité si le code fait référence à MAXENCE_DATA
 const MAXENCE_DATA = USER_DATA;
+
