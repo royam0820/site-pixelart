@@ -1,4 +1,4 @@
-# 🕹️ PRD — PIXELQUEST : La Légende de Maxence
+# 🕹️ PRD (*Product Requirements Document*) — PIXELQUEST : La Légende de Maxence
 
 > **Tagline** : *« Appuie sur START pour me découvrir. »*
 > **Démo en ligne** : https://royam0820.github.io/site-pixelart/
