@@ -4,11 +4,12 @@ Cette fiche d'activité te permet d'apprendre à **modifier directement le vrai 
 
 ---
 
-## 🛠️ Les 3 raccourcis magiques à connaître avant de commencer
+## 🛠️ Les 4 raccourcis magiques à connaître avant de commencer
 
-1. **`Cmd + S`** (dans l'éditeur de code) : **Enregistrer** ta modification.
-2. **`Cmd + R`** (dans ton navigateur web) : **Rafraîchir la page** pour voir l'effet de ton code tout de suite !
-3. **`Cmd + Z`** (dans l'éditeur de code) : **Annuler** ta dernière action si tu as effacé une virgule ou un guillemet par erreur (la touche « retour dans le temps » des développeurs !).
+1. **`Cmd + F`** (dans l'éditeur de code) : **Rechercher un mot ou du texte** rapidement dans le fichier sans avoir à tout lire ligne par ligne.
+2. **`Cmd + S`** (dans l'éditeur de code) : **Enregistrer** ta modification.
+3. **`Cmd + R`** (dans ton navigateur web) : **Rafraîchir la page** pour voir l'effet de ton code tout de suite !
+4. **`Cmd + Z`** (dans l'éditeur de code) : **Annuler** ta dernière action si tu as effacé une virgule ou un guillemet par erreur (la touche « retour dans le temps » des développeurs !).
 
 ---
 
