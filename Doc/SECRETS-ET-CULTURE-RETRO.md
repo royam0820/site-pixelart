@@ -52,3 +52,24 @@ Dans un jeu vidéo ou un site web, un **Easter Egg** est une fonction cachée, u
 - **C'est quoi les petites lignes horizontales sur l'écran (CRT Scanlines) ?**
   Avant les écrans plats d'aujourd'hui, on jouait sur de grosses télévisions à **tube cathodique (CRT)** et sur des bornes d'arcade. Le faisceau lumineux balayait l'écran ligne par ligne, ce qui créait ces fines lignes horizontales appelées *scanlines* !
 
+---
+
+## 4. 📈 Que signifie « XP » (Points d'Expérience) ?
+
+**XP** est l'abréviation universelle de **« eXperience Points »** en anglais, soit **« Points d'Expérience »** en français (parfois aussi écrit *EXP*).
+
+### 🎲 D'où ça vient ?
+- Le concept a été inventé en **1974** dans le tout premier jeu de rôle sur table, ***Donjons & Dragons*** (*Dungeons & Dragons*), avant d'être repris dans presque tous les jeux vidéo modernes (*Pokémon*, *Minecraft*, *Fortnite*, *Zelda*, *Brawl Stars*…).
+- **Le principe** : au départ, le héros est au **Niveau 1** avec **0 XP**. À chaque fois qu'il explore un lieu, résout une énigme ou bat un Boss, il gagne des points d'expérience (**+10 XP**, **+15 XP**…).
+- Dès que sa jauge d'XP franchit un palier, il monte de niveau (**« Level Up ! »**) et obtient un nouveau titre plus prestigieux.
+
+### 🏆 Les 5 paliers d'XP sur le site de Maxence (`script.js`)
+| XP accumulée | Niveau & Titre débloqué |
+| :---: | :--- |
+| **0 à 19 XP** | Niv. 1 — *Héros en herbe 🌱* |
+| **20 à 39 XP** | Niv. 2 — *Explorateur Rétro 🧭* |
+| **40 à 69 XP** | Niv. 3 — *Chevalier du Code 🗡️* |
+| **70 à 99 XP** | Niv. 4 — *Maître du Pixel ⚡* |
+| **100 XP et +** | Niv. 5 — *Légende de l'Arcade 🏆* |
+
+
