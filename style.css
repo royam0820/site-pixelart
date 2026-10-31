@@ -1,0 +1,945 @@
+/* ==========================================================================
+   🎨 STYLE.CSS — LE COSTUME & LE DÉCOR DU JEU PIXELQUEST
+   Rôle pédagogique : Gère toutes les couleurs, les polices Pixel-Art,
+   la mise en page, le mode Jour/Nuit et les animations visuelles.
+   ========================================================================== */
+
+/* 1. PALETTE & VARIABLES (MODE NUIT PAR DÉFAUT + MODE JOUR DU JEU) */
+:root {
+  --bg-deep: #090a1a;
+  --bg-panel: #121536;
+  --bg-card: #1a1f4d;
+  --bg-map: #0e1738;
+  --map-grass: #152642;
+  --map-path: #3b2d54;
+  --neon-cyan: #00f5d4;
+  --neon-pink: #ff2a85;
+  --neon-purple: #9b5de5;
+  --neon-yellow: #fee440;
+  --neon-green: #38ef7d;
+  --neon-orange: #ff9f1c;
+  --text-main: #f0f4ff;
+  --text-muted: #98a4d4;
+  --border-pixel: #00f5d4;
+  --shadow-color: rgba(0, 245, 212, 0.28);
+  --font-pixel: 'Press Start 2P', 'Courier New', monospace;
+  --font-retro: 'VT323', 'Courier New', monospace;
+}
+
+/* Mode Jour ("Jour dans le jeu") */
+body.day-mode {
+  --bg-deep: #48bfe3;
+  --bg-panel: #fff8e7;
+  --bg-card: #ffffff;
+  --bg-map: #52b788;
+  --map-grass: #40916c;
+  --map-path: #e9c46a;
+  --neon-cyan: #0077b6;
+  --neon-pink: #e63946;
+  --neon-purple: #7209b7;
+  --neon-yellow: #f4a261;
+  --neon-green: #2a9d8f;
+  --neon-orange: #e76f51;
+  --text-main: #1d1e2c;
+  --text-muted: #4a4e69;
+  --border-pixel: #1d1e2c;
+  --shadow-color: rgba(29, 30, 44, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+/* Curseurs Pixel Art Custom (Épée par défaut, Fusée en option) */
+body.cursor-sword,
+body.cursor-sword button,
+body.cursor-sword a,
+body.cursor-sword .clickable {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 16 16' shape-rendering='crispEdges'><path fill='%2300f5d4' d='M1 1h3v1H2v2H1V1z'/><path fill='%23ffffff' d='M2 2h2v1h1v1h1v1h1v1h1v1h1v1h1v1h-2V8H7V7H6V6H5V5H4V4H3V3H2V2z'/><path fill='%23fee440' d='M10 8h2v1h1v2h-2v1H9v1H8v-2h1V9h1V8z'/><path fill='%23ff2a85' d='M11 11h2v2h1v2h-2v-1h-2v-2h1v-1z'/></svg>") 2 2, pointer;
+}
+
+body.cursor-rocket,
+body.cursor-rocket button,
+body.cursor-rocket a,
+body.cursor-rocket .clickable {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 16 16' shape-rendering='crispEdges'><path fill='%23ff2a85' d='M1 1h4v1h2v2H5v2H4v1H2V5H1V1z'/><path fill='%23ffffff' d='M3 3h4v1h2v2h1v2H8V7H6V5H4V4H3V3z'/><path fill='%2300f5d4' d='M5 4h2v2H5z'/><path fill='%23fee440' d='M10 9h2v2h2v2h-3v-1H9v-2h1V9z'/></svg>") 2 2, pointer;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: var(--font-retro);
+  font-size: 22px;
+  line-height: 1.4;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  position: relative;
+}
+
+/* Effet CRT Scanlines subtil */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.12) 0px,
+    rgba(0, 0, 0, 0.12) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+body.day-mode::after {
+  opacity: 0.25;
+}
+
+/* Mode Rainbow Konami Code (10 secondes) */
+@keyframes rainbowOverdrive {
+  0%   { filter: hue-rotate(0deg) saturate(1.5); }
+  50%  { filter: hue-rotate(180deg) saturate(2); }
+  100% { filter: hue-rotate(360deg) saturate(1.5); }
+}
+body.rainbow-mode {
+  animation: rainbowOverdrive 1.2s linear infinite;
+}
+
+/* Fond étoilé / nuages animés */
+.sky-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  box-shadow: 0 0 6px var(--neon-cyan);
+  animation: twinkle 2.5s infinite alternate;
+}
+body.day-mode .star {
+  width: 36px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 8px -6px 0 rgba(255, 255, 255, 0.75), -8px 4px 0 rgba(255, 255, 255, 0.65);
+  animation: floatCloud 18s linear infinite;
+}
+@keyframes twinkle {
+  0% { opacity: 0.2; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1.3); }
+}
+@keyframes floatCloud {
+  from { transform: translateX(-60px); }
+  to { transform: translateX(100vw); }
+}
+
+/* ==========================================================================
+   🕹️ 2. CONTENEUR PRINCIPAL & HUD (BARRE SUPÉRIEURE)
+   ========================================================================== */
+.arcade-wrapper {
+  position: relative;
+  z-index: 2;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 14px 16px 60px;
+}
+
+.hud-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--bg-panel);
+  border: 4px solid var(--border-pixel);
+  box-shadow: 0 6px 0 #000, 0 0 18px var(--shadow-color);
+  padding: 12px 16px;
+  margin-bottom: 18px;
+}
+
+.hud-hero {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hud-avatar-btn {
+  width: 54px;
+  height: 54px;
+  background: var(--bg-card);
+  border: 3px solid var(--neon-yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.15s;
+}
+.hud-avatar-btn:hover {
+  transform: scale(1.08);
+}
+.hud-avatar-btn:active {
+  transform: scale(0.95);
+}
+
+.hud-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hud-name {
+  font-family: var(--font-pixel);
+  font-size: 13px;
+  color: var(--neon-yellow);
+  text-shadow: 2px 2px 0 #000;
+  letter-spacing: 1px;
+}
+.hud-rank {
+  font-size: 20px;
+  color: var(--neon-cyan);
+  font-weight: bold;
+}
+
+/* Barre d'XP */
+.hud-xp-section {
+  flex: 1;
+  min-width: 220px;
+  max-width: 370px;
+}
+.xp-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  margin-bottom: 6px;
+  color: var(--text-main);
+}
+.xp-track {
+  width: 100%;
+  height: 18px;
+  background: #060713;
+  border: 3px solid var(--neon-purple);
+  position: relative;
+  overflow: hidden;
+}
+.xp-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan), var(--neon-green));
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Boutons d'outils du HUD */
+.hud-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.pixel-btn {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  padding: 10px 12px;
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 3px solid var(--border-pixel);
+  box-shadow: 0 4px 0 #000;
+  text-transform: uppercase;
+  transition: transform 0.1s, box-shadow 0.1s, background-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.pixel-btn:hover {
+  background: var(--neon-purple);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #000;
+}
+.pixel-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #000;
+}
+.pixel-btn.active-toggle {
+  border-color: var(--neon-yellow);
+  color: var(--neon-yellow);
+}
+
+/* ==========================================================================
+   🕹️ 3. ÉCRAN 1 : BORNE D'ARCADE D'ACCUEIL (START SCREEN)
+   ========================================================================== */
+.screen {
+  display: none;
+  animation: fadeInScreen 0.35s ease-out;
+}
+.screen.active {
+  display: block;
+}
+@keyframes fadeInScreen {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.arcade-cabinet {
+  background: var(--bg-panel);
+  border: 6px solid var(--neon-purple);
+  box-shadow:
+    0 0 0 4px #000,
+    0 12px 0 #000,
+    0 0 45px var(--shadow-color);
+  padding: 36px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.arcade-badge-top {
+  display: inline-block;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  color: var(--neon-pink);
+  background: rgba(255, 42, 133, 0.14);
+  border: 2px solid var(--neon-pink);
+  padding: 6px 14px;
+  margin-bottom: 18px;
+  letter-spacing: 1.5px;
+}
+
+.neon-logo {
+  font-family: var(--font-pixel);
+  font-size: clamp(26px, 5.5vw, 54px);
+  color: var(--neon-cyan);
+  text-shadow:
+    0 0 10px var(--neon-cyan),
+    0 0 25px var(--neon-purple),
+    4px 4px 0 #000;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  animation: neonFlicker 3s infinite alternate;
+}
+
+.neon-subtitle {
+  font-family: var(--font-pixel);
+  font-size: clamp(13px, 2.3vw, 20px);
+  color: var(--neon-yellow);
+  text-shadow: 2px 2px 0 #000;
+  margin-bottom: 24px;
+}
+
+@keyframes neonFlicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 10px var(--neon-cyan), 0 0 26px var(--neon-purple), 4px 4px 0 #000;
+  }
+  20%, 24%, 55% {
+    opacity: 0.72;
+    text-shadow: 2px 2px 0 #000;
+  }
+}
+
+.hero-showcase {
+  margin: 20px auto 26px;
+  width: 148px;
+  height: 148px;
+  background: radial-gradient(circle, rgba(0, 245, 212, 0.22) 0%, transparent 70%);
+  border: 4px dashed var(--neon-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: heroFloat 2.4s ease-in-out infinite;
+}
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Animation Danse Pixel (Easter Egg 5 clics sur Maxence) */
+@keyframes pixelDance {
+  0%   { transform: translateY(0) rotate(0deg) scale(1); }
+  25%  { transform: translateY(-14px) rotate(-15deg) scale(1.15); }
+  50%  { transform: translateY(0) rotate(15deg) scale(0.95) scaleX(-1); }
+  75%  { transform: translateY(-14px) rotate(-10deg) scale(1.15) scaleX(-1); }
+  100% { transform: translateY(0) rotate(0deg) scale(1); }
+}
+.dancing {
+  animation: pixelDance 0.45s infinite !important;
+}
+
+.tagline-box {
+  max-width: 600px;
+  margin: 0 auto 28px;
+  font-size: 26px;
+  color: var(--text-main);
+  background: rgba(0, 0, 0, 0.32);
+  border-left: 4px solid var(--neon-yellow);
+  border-right: 4px solid var(--neon-yellow);
+  padding: 12px 20px;
+}
+
+.start-btn {
+  font-family: var(--font-pixel);
+  font-size: clamp(14px, 2.5vw, 20px);
+  padding: 18px 34px;
+  background: var(--neon-pink);
+  color: #fff;
+  border: 4px solid #fff;
+  box-shadow: 0 8px 0 #7b0d40, 0 0 25px var(--neon-pink);
+  animation: pulseStart 1.1s infinite alternate;
+  margin-bottom: 24px;
+}
+.start-btn:hover {
+  background: var(--neon-yellow);
+  color: #000;
+  border-color: #000;
+  box-shadow: 0 8px 0 #9e7b00, 0 0 30px var(--neon-yellow);
+}
+@keyframes pulseStart {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+.arcade-tips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+  font-size: 19px;
+  color: var(--text-muted);
+}
+.arcade-tips span {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 4px 12px;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ==========================================================================
+   🗺️ 4. ÉCRAN 2 : LA CARTE DU MONDE INTERACTIVE (OVERWORLD MAP)
+   ========================================================================== */
+.world-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.world-title {
+  font-family: var(--font-pixel);
+  font-size: clamp(14px, 2.2vw, 20px);
+  color: var(--neon-cyan);
+  text-shadow: 2px 2px 0 #000;
+}
+
+.map-stage {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-color: var(--bg-map);
+  background-image:
+    radial-gradient(var(--map-grass) 20%, transparent 20%),
+    radial-gradient(var(--map-grass) 20%, transparent 20%);
+  background-position: 0 0, 16px 16px;
+  background-size: 32px 32px;
+  border: 6px solid var(--border-pixel);
+  box-shadow: 0 10px 0 #000, 0 0 30px var(--shadow-color);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+/* Chemins en pointillés pixel sur la carte */
+.map-roadsSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Décorations pixel sur la carte (arbres, rochers, rivière) */
+.map-deco {
+  position: absolute;
+  font-size: 26px;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.6));
+}
+
+/* Les 4 Zones sur la carte */
+.map-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  background: var(--bg-panel);
+  border: 4px solid var(--neon-cyan);
+  box-shadow: 0 6px 0 #000;
+  padding: 10px 14px;
+  min-width: 165px;
+  text-align: center;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.map-node:hover {
+  transform: translate(-50%, -56%) scale(1.06);
+  border-color: var(--neon-yellow);
+  box-shadow: 0 10px 0 #000, 0 0 20px var(--neon-yellow);
+  z-index: 6;
+}
+.map-node.visited {
+  border-color: var(--neon-green);
+}
+.map-node .node-icon {
+  font-size: 34px;
+  display: block;
+  margin-bottom: 4px;
+}
+.map-node .node-title {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--text-main);
+  display: block;
+  line-height: 1.4;
+}
+.map-node .node-sub {
+  font-size: 17px;
+  color: var(--neon-yellow);
+  display: block;
+  margin-top: 2px;
+}
+.node-status-pill {
+  position: absolute;
+  top: -12px;
+  right: -10px;
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  padding: 4px 6px;
+  background: var(--neon-pink);
+  color: #fff;
+  border: 2px solid #000;
+}
+.map-node.visited .node-status-pill {
+  background: var(--neon-green);
+  color: #000;
+}
+
+/* Avatar de Maxence qui se déplace sur la carte */
+.map-hero {
+  position: absolute;
+  width: 68px;
+  height: 68px;
+  transform: translate(-50%, -85%);
+  z-index: 10;
+  transition: left 0.65s cubic-bezier(0.25, 1, 0.5, 1), top 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.map-hero-tag {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  background: var(--neon-yellow);
+  color: #000;
+  padding: 2px 6px;
+  border: 2px solid #000;
+  margin-bottom: 2px;
+  white-space: nowrap;
+}
+.map-hero-sprite {
+  width: 56px;
+  height: 56px;
+  filter: drop-shadow(0 6px 0 rgba(0,0,0,0.65));
+}
+.map-hero.walking .map-hero-sprite {
+  animation: walkBounce 0.18s infinite alternate;
+}
+@keyframes walkBounce {
+  from { transform: translateY(0) rotate(-5deg); }
+  to { transform: translateY(-7px) rotate(5deg); }
+}
+
+/* Barre d'accès rapide sous la carte */
+.quick-zones-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  gap: 12px;
+}
+
+/* ==========================================================================
+   🏰 5. MODALES / NIVEAUX (LES 4 ZONES DU JEU)
+   ========================================================================== */
+.level-panel {
+  background: var(--bg-panel);
+  border: 5px solid var(--border-pixel);
+  box-shadow: 0 10px 0 #000, 0 0 35px var(--shadow-color);
+  padding: 24px;
+  position: relative;
+}
+
+.level-top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 4px dashed var(--neon-purple);
+  padding-bottom: 16px;
+  margin-bottom: 22px;
+}
+
+.level-heading {
+  font-family: var(--font-pixel);
+  font-size: clamp(14px, 2.5vw, 22px);
+  color: var(--neon-yellow);
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* --- ZONE 1 : QUI SUIS-JE ? (FICHE HÉROS + 5 FAITS FUN) --- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+@media (max-width: 780px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .map-stage {
+    height: 560px;
+  }
+}
+
+.rpg-stat-card {
+  background: var(--bg-card);
+  border: 4px solid var(--neon-purple);
+  padding: 18px;
+  box-shadow: 0 6px 0 #000;
+}
+.stat-row {
+  margin-bottom: 12px;
+}
+.stat-label {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+.stat-bar-bg {
+  height: 14px;
+  background: #08091a;
+  border: 2px solid var(--border-pixel);
+}
+.stat-bar-fill {
+  height: 100%;
+  background: var(--neon-cyan);
+}
+
+.hobby-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+.hobby-pill {
+  background: rgba(0, 245, 212, 0.14);
+  border: 2px solid var(--neon-cyan);
+  padding: 6px 12px;
+  font-size: 20px;
+}
+
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+.fact-card {
+  background: var(--bg-card);
+  border: 3px solid var(--neon-cyan);
+  padding: 16px;
+  box-shadow: 0 5px 0 #000;
+  transition: transform 0.2s, border-color 0.2s;
+  position: relative;
+}
+.fact-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--neon-yellow);
+}
+.fact-num {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--neon-pink);
+  margin-bottom: 8px;
+  display: block;
+}
+.fact-card.correct-absurd {
+  border-color: var(--neon-green);
+  background: rgba(56, 239, 125, 0.15);
+}
+.fact-card.wrong-absurd {
+  border-color: var(--neon-pink);
+  opacity: 0.75;
+}
+
+/* --- ZONE 2 : MES PROJETS (BOSS À DÉBLOQUER) --- */
+.boss-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 20px;
+}
+.boss-card {
+  background: var(--bg-card);
+  border: 4px solid var(--neon-pink);
+  box-shadow: 0 8px 0 #000;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: border-color 0.3s;
+}
+.boss-card.unlocked {
+  border-color: var(--neon-green);
+}
+.boss-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.boss-icon-box {
+  width: 64px;
+  height: 64px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 3px solid var(--neon-yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  flex-shrink: 0;
+}
+.boss-hp-track {
+  width: 100%;
+  height: 14px;
+  background: #1a0510;
+  border: 2px solid #fff;
+  margin: 10px 0;
+  overflow: hidden;
+}
+.boss-hp-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #ff2a85, #ff9f1c);
+  transition: width 0.2s;
+}
+.boss-project-details {
+  display: none;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 3px dashed var(--neon-green);
+  animation: fadeInScreen 0.35s ease;
+}
+.boss-card.unlocked .boss-project-details {
+  display: block;
+}
+.boss-card.unlocked .boss-lock-zone {
+  display: none;
+}
+
+/* --- ZONE 3 : MES HIGH SCORES & MINI-JEU D'ARCADE --- */
+.scores-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 22px;
+}
+@media (max-width: 850px) {
+  .scores-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.scoreboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+.scoreboard-table th,
+.scoreboard-table td {
+  padding: 10px 12px;
+  border: 3px solid var(--neon-purple);
+  text-align: left;
+}
+.scoreboard-table th {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  background: rgba(155, 93, 229, 0.25);
+  color: var(--neon-yellow);
+}
+.badges-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  gap: 10px;
+}
+.badge-item {
+  background: var(--bg-card);
+  border: 3px solid var(--text-muted);
+  padding: 10px;
+  text-align: center;
+  opacity: 0.45;
+  filter: grayscale(1);
+  transition: all 0.3s;
+}
+.badge-item.earned {
+  opacity: 1;
+  filter: grayscale(0);
+  border-color: var(--neon-yellow);
+  box-shadow: 0 0 14px rgba(254, 228, 64, 0.35);
+}
+.badge-item .badge-emoji {
+  font-size: 30px;
+  display: block;
+  margin-bottom: 4px;
+}
+.badge-item .badge-name {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  display: block;
+  color: var(--neon-yellow);
+}
+
+/* Mini-jeu Canvas */
+.minigame-box {
+  background: #070814;
+  border: 4px solid var(--neon-cyan);
+  padding: 14px;
+  text-align: center;
+  box-shadow: 0 6px 0 #000;
+}
+#arcadeCanvas {
+  background: #050611;
+  border: 3px solid var(--neon-purple);
+  width: 100%;
+  max-width: 360px;
+  height: 250px;
+  display: block;
+  margin: 10px auto;
+  image-rendering: pixelated;
+}
+
+/* --- ZONE 4 : BOSS FINAL CONTACT & TRÉSOR CACHÉ --- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 22px;
+}
+@media (max-width: 780px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.pixel-form label {
+  display: block;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--neon-cyan);
+  margin: 12px 0 6px;
+}
+.pixel-input,
+.pixel-select,
+.pixel-textarea {
+  width: 100%;
+  background: var(--bg-deep);
+  color: var(--text-main);
+  border: 3px solid var(--neon-purple);
+  padding: 10px 12px;
+  font-family: var(--font-retro);
+  font-size: 21px;
+}
+.pixel-input:focus,
+.pixel-select:focus,
+.pixel-textarea:focus {
+  outline: none;
+  border-color: var(--neon-yellow);
+}
+
+/* Trésor caché dans le décor */
+.secret-chest-spot {
+  margin-top: 18px;
+  padding: 14px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 3px dashed rgba(254, 228, 64, 0.45);
+  text-align: center;
+  position: relative;
+}
+.chest-btn {
+  font-size: 44px;
+  background: none;
+  border: none;
+  transition: transform 0.2s;
+  filter: drop-shadow(0 0 10px rgba(254, 228, 64, 0.6));
+}
+.chest-btn:hover {
+  transform: scale(1.18) rotate(-6deg);
+}
+
+/* ==========================================================================
+   🎉 6. TOASTS XP, CONFETTIS PIXEL & PIED DE PAGE
+   ========================================================================== */
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+.xp-toast {
+  background: var(--bg-panel);
+  border: 4px solid var(--neon-yellow);
+  color: var(--neon-yellow);
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  padding: 12px 16px;
+  box-shadow: 0 6px 0 #000;
+  animation: slideInToast 0.3s ease, fadeOutToast 0.4s ease 2.8s forwards;
+}
+@keyframes slideInToast {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes fadeOutToast {
+  to { transform: translateY(20px); opacity: 0; }
+}
+
+.confetti-pixel {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  z-index: 9997;
+  pointer-events: none;
+  animation: fallConfetti 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+@keyframes fallConfetti {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(260px) rotate(360deg); opacity: 0; }
+}
+
+.footer-bar {
+  margin-top: 26px;
+  text-align: center;
+  font-size: 18px;
+  color: var(--text-muted);
+  padding: 12px;
+  border-top: 2px dashed rgba(255, 255, 255, 0.15);
+}

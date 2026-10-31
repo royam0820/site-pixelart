@@ -29,7 +29,9 @@
 - [x] **Easter Egg #1** : 5 clics sur l'avatar de Maxence → **Danse Pixel** (`+15 XP`).
 - [x] **Easter Egg #2** : **Code Konami** (`↑ ↑ ↓ ↓ ← → ← → B A` ou bouton dédié) → **Mode Rainbow 10s** (`+25 XP`).
 - [x] **Mode 🌙 Nuit / ☀️ Jour** et changement de **curseur custom** (**🗡️ Épée** / **🚀 Fusée**).
-- [x] **Documentation complète** : `PRD.md`, `README.md`, `DEVLOG.md`, `SECRETS-ET-CULTURE-RETRO.md`, `PROGRESS.md`.
+- [x] **Architecture modulaire pédagogique en 4 fichiers** : `index.html` (Squelette), `style.css` (Costume), `user-data.js` (Carnet de données) et `script.js` (Cerveau du jeu).
+- [x] **Contrôle tactile `touchmove` ajouté** sur le mini-jeu *Astro-Dodge* pour mobile et tablette.
+- [x] **Documentation complète** : `PRD.md`, `README.md`, `DEVLOG.md`, `ARCHITECTURE-JEU-ARCADE.md`, `SECRETS-ET-CULTURE-RETRO.md`, `PROGRESS.md`.
 
 ---
 
@@ -61,3 +63,4 @@
 - [ ] **Musique de fond 8-bit en boucle** (activable/désactivable indépendamment des bruitages).
 - [ ] **Nouveau Boss caché (Boss Secret #4)** qui n'apparaît sur la carte que lorsqu'on atteint **100 XP (Niveau 5 — Légende de l'Arcade)**.
 - [ ] **Nettoyage du dépôt** : supprimer le fichier temporaire `dev-site-V0` s'il n'est plus utilisé.
+

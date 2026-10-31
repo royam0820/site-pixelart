@@ -28,13 +28,16 @@ Plutôt qu'une page web classique, chaque section du site est un **niveau** acce
 
 ---
 
-## 📁 Structure du projet
+## 📁 Structure du projet (Architecture Modulaire Pédagogique)
 
-Conformément à la philosophie **Vibe Coding** décrite dans le PRD, toute l'application tient dans **un seul fichier autonome** (`index.html`) sans aucune dépendance externe ni serveur requis :
+Pour faciliter l'apprentissage du développement web (« la métaphore du corps humain »), le projet est découpé en **4 fichiers complémentaires** qui fonctionnent directement en local (double-clic sur `index.html`) comme sur GitHub Pages :
 
 ```text
 .
-├── index.html                           # Site complet (HTML5 + CSS3 + Synthé 8-bit JS + Mini-jeu Canvas)
+├── index.html                           # 🦴 Le Squelette : structure des 5 écrans, HUD et carte du monde
+├── style.css                            # 🎨 Le Costume : couleurs néon, polices pixel-art, mode Jour/Nuit et animations
+├── user-data.js                         # 📓 Le Carnet : toutes les données personnelles (stats, 5 faits, 3 projets, records)
+├── script.js                            # 🧠 Le Cerveau : moteur du jeu, synthé 8-bit, XP, localStorage, mini-jeu et Konami
 ├── PRD.md                               # Product Requirements Document complet du projet
 ├── README.md                            # Documentation et guide de personnalisation
 ├── PROGRESS.md                          # État d'avancement, bugs connus et prochaines tâches (Roadmap)
@@ -50,15 +53,16 @@ Conformément à la philosophie **Vibe Coding** décrite dans le PRD, toute l'ap
 ## 🛠️ Comment lancer ou modifier le site
 
 ### 1. En local (sur ton ordinateur)
-Double-clique simplement sur le fichier **`index.html`** : il s'ouvre immédiatement dans ton navigateur (Chrome, Safari, Firefox, Edge), même sans connexion Internet.
+Double-clique simplement sur le fichier **`index.html`** : il charge automatiquement `style.css`, `user-data.js` et `script.js` et s'ouvre dans ton navigateur, même sans connexion Internet.
 
-### 2. Personnaliser les textes de Maxence
-Ouvre **`index.html`** dans un éditeur de texte et cherche la section **`MAXENCE_DATA`** au début de la balise `<script>` :
-- Modifie les **stats RPG** (`MAXENCE_DATA.stats`)
-- Modifie les **passions & sports** (`MAXENCE_DATA.hobbies`)
-- Modifie les **5 faits fun** (`MAXENCE_DATA.faitsFun`)
-- Modifie les **3 projets / Boss** (`MAXENCE_DATA.projets`)
-- Modifie les **records IRL** (`MAXENCE_DATA.highScores`)
+### 2. Personnaliser les textes du Héros (sans toucher au code du jeu !)
+Ouvre uniquement le fichier **`user-data.js`** dans un éditeur de texte :
+- Modifie le **pseudo** (`USER_DATA.pseudo`)
+- Modifie les **stats RPG** (`USER_DATA.stats`)
+- Modifie les **passions & sports** (`USER_DATA.hobbies`)
+- Modifie les **5 faits fun** (`USER_DATA.faitsFun`)
+- Modifie les **3 projets / Boss** (`USER_DATA.projets`)
+- Modifie les **records IRL** (`USER_DATA.highScores`)
 
 ### 3. Mettre à jour le site en ligne sur GitHub Pages
 ```bash
