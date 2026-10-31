@@ -39,6 +39,7 @@ Conformément à la philosophie **Vibe Coding** décrite dans le PRD, toute l'ap
 ├── README.md                            # Documentation et guide de personnalisation
 ├── PROGRESS.md                          # État d'avancement, bugs connus et prochaines tâches (Roadmap)
 ├── DEVLOG.md                            # Cahier de bord Vibe Coding + explication technique des Badges & XP
+├── ARCHITECTURE-JEU-ARCADE.md           # Construction d'un jeu d'arcade rétro et parallèle avec PIXELQUEST
 ├── SECRETS-ET-CULTURE-RETRO.md          # Histoire du Code Konami, des Easter Eggs et de la culture 8-bit
 └── Instructions/
     └── PRD - Site Web - PixelQuest.md   # Cahier des charges initial & méthodologie Vibe Coding
