@@ -25,7 +25,7 @@ Pas un portfolio statique — une **aventure interactive** pensée pour être ex
 ### Objectifs & Critères de succès
 | # | Objectif | Critère de succès | Statut |
 |---|----------|-------------------|--------|
-| 1 | Site jouable et autonome | Fichier unique `index.html` fonctionnel sans serveur (< 500 Ko) | ✅ Livré (~36 Ko) |
+| 1 | Site jouable et autonome | Architecture modulaire en 4 fichiers (`index.html`, `style.css`, `user-data.js`, `script.js`) fonctionnelle sans serveur (< 500 Ko) | ✅ Livré (~40 Ko) |
 | 2 | Personnalisation centrée sur Maxence | Avatar pixel-art de Maxence, stats RPG, 5 faits fun, 3 boss-projets, records | ✅ Livré |
 | 3 | Effets « waouh » & rejouabilité | Sons 8-bit, confettis, mode Jour/Nuit, curseur custom, 2+ easter eggs, mini-jeu | ✅ Livré |
 | 4 | Publication web gratuite | Hébergé en ligne sur GitHub Pages avec déploiement automatique | ✅ En ligne |
@@ -84,11 +84,14 @@ Maxence se déplace visuellement sur les routes en pointillés de la carte jusqu
 
 ## 4. Architecture Technique & Contraintes
 
-| Composant | Choix technique | Justification |
-|-----------|-----------------|---------------|
-| **Structure** | Fichier unique `index.html` | Zéro installation, double-clic local ou hébergement immédiat |
-| **Styles** | CSS3 natif dans `<style>` | Variables CSS pour le thème Jour/Nuit, animations keyframes, CRT scanlines |
-| **Logique & Audio** | JavaScript Vanilla dans `<script>` | Web Audio API (synthé 8-bit sans fichiers MP3), Canvas 2D, `localStorage` |
+Le projet est découpé en **4 fichiers modulaires** pour séparer clairement le squelette, le design, les données personnelles et le moteur du jeu :
+
+| Composant | Fichier / Choix technique | Justification |
+|-----------|---------------------------|---------------|
+| **1. Structure (Squelette)** | `index.html` (HTML5 sémantique) | Structure des écrans (Accueil, Carte, 4 Zones, HUD), zéro installation, double-clic local |
+| **2. Styles (Costume & Décor)** | `style.css` (CSS3 natif) | Variables CSS pour le thème Jour/Nuit, animations keyframes, CRT scanlines, responsive |
+| **3. Données du Héros (Carnet)** | `user-data.js` (`USER_DATA`) | Contient toutes les données personnalisables (stats RPG, passions, 5 faits fun, 3 boss, records) modifiables sans toucher au moteur |
+| **4. Moteur & Audio (Cerveau)** | `script.js` (JavaScript Vanilla) | Logique de jeu, Web Audio API (synthé 8-bit sans MP3), Canvas 2D (`Astro-Dodge`), sauvegarde `localStorage` |
 | **Graphismes** | Sprites SVG `crispEdges` + Emojis | Poids plume (< 40 Ko au total), netteté pixel-art sur tous les écrans |
 | **Confidentialité** | Pseudo uniquement (`MAXENCE`) | Aucune donnée personnelle sensible exposée (conformité sécurité mineur) |
 | **Hébergement** | GitHub Pages (`main` / root) | Gratuit, HTTPS activé, mise à jour automatique à chaque `git push` |
